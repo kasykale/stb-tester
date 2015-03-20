@@ -16,7 +16,7 @@ For installation instructions see
 
 #### 22:
 
-UNRELEASED.
+20 March 2015.
 
 Note: The version numbering scheme has changed from this release onwards.
 Instead of this being version 0.22 it is version 22.  stb-tester has been
