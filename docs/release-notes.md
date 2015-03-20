@@ -39,7 +39,7 @@ would be misleading and adds no information.
   `wait_until` in this release, this provides a more composable API. See the
   documentation for `wait_until` for more details.  `stbt` functions now
   (correctly) raise `ValueError` if the arguments passed are incorrect rather
-  than checking for correctness with `assert`
+  than checking for correctness with `assert`.
 
 * `stbt record` now creates python files with the testcase in a Python function
   instead of at the top level of the file. See the change to `stbt run` in the
@@ -108,7 +108,7 @@ would be misleading and adds no information.
 
 * The text drawn on the video that is saved by `stbt run --save-video` and
   `stbt batch run` now uses a more legible font and background, to make it
-  easier to read.  (Thanks to Máté Szendrő for this).
+  easier to read.  (Thanks to Máté Szendrő for this.)
 
 * API: New function `wait_until` runs any given function or lambda expression
   until it succeeds, or until a timeout. This provides the waiting behaviour of
@@ -118,11 +118,15 @@ would be misleading and adds no information.
   http://stb-tester.com/stbt.html#wait_until) for more details.
 
 * report: The `stbt batch run` report now uses a logarithmic y-axis for test
-  duration, so the graph is still readable when there are very-long test runs
+  duration, so the graph is still readable when there are very long test runs
   alongside shorter ones.
 
-* report: Truncate cell contents rather than wrapping words.  This makes it
-  easier and more predictable to show many test rows.
+* report: Improved table layout so that it doesn't overflow into the right-hand
+  details pane if the window is too small. We don't allow table rows to
+  overflow, so the row height for each testrun is consistent and neater. We
+  also truncate the cell contents (such as the failure-reason column) using
+  CSS instead of truncating it in the HTML; this allows the full text of the
+  table cell to be searchable from the search box at the top of the report.
 
 * API: `is_frame_black()` now no longer requires a frame to be passed in.  If
   one is not specified it will be grabbed from live video, much like `match()`.
@@ -140,7 +144,7 @@ would be misleading and adds no information.
 * report: Fixed filtering results for columns where the first row could be
   confused as a date, because the date matching regex was too broad.
 
-* `stbt batch run` will no-longer skip tests if the test-script reads data on
+* `stbt batch run` will no longer skip tests if the test-script reads data on
   stdin.
 
 [#264]: https://github.com/stb-tester/stb-tester/issues/264
